@@ -2,6 +2,9 @@
  * Watchable
  */
 public interface Watchable {
+
+    public String getId();
+
     public String getName();
 
     public String getCover();
@@ -50,8 +53,9 @@ public interface Watchable {
 
     public boolean setGenres(String[] genres);
 
-    public boolean setData(String name, String cover, String thumbnail, String synopsis, String releaseDate,
-            String length, float rating);
+    public boolean setData(String id, String name, String cover, String thumbnail, String synopsis, String releaseDate,
+            String length, float rating, String[] trailers, String[] actors, String[] producers, String[] comments,
+            String[] genres);
 
     public boolean saveToDatabase();
 

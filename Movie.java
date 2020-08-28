@@ -2,6 +2,7 @@
  * Movie
  */
 public class Movie implements Watchable {
+    private String id;
     private String name;
     private String cover;
     private String thumbnail;
@@ -14,6 +15,26 @@ public class Movie implements Watchable {
     private String[] producers;
     private String[] comments;
     private String[] genres;
+
+    public Movie() {
+    }
+
+    public Movie(String id, String name, String cover, String thumbnail, String synopsis, String releaseDate,
+            String length, float rating, String[] trailers, String[] actors, String[] producers, String[] comments,
+            String[] genres) {
+        this.id = id;
+        this.setName(name);
+        this.setCover(cover);
+        this.setThumbnail(thumbnail);
+        this.setSynopsis(synopsis);
+        this.setReleaseDate(releaseDate);
+        this.setLength(length);
+        this.setRating(rating);
+    }
+
+    public String getId() {
+        return this.id;
+    }
 
     public String getName() {
         return this.name;
@@ -144,13 +165,18 @@ public class Movie implements Watchable {
         return true;
     }
 
-    public boolean setData(String name, String cover, String thumbnail, String synopsis, String releaseDate,
-            String length, float rating) {
+    public boolean setData(String id, String name, String cover, String thumbnail, String synopsis, String releaseDate,
+            String length, float rating, String[] trailers, String[] actors, String[] producers, String[] comments,
+            String[] genres) {
         if (this.setName(name) && this.setCover(cover) && this.setThumbnail(thumbnail) && this.setSynopsis(synopsis)
-                && this.setReleaseDate(releaseDate) && this.setLength(length) && this.setRating(rating)) {
+                && this.setReleaseDate(releaseDate) && this.setLength(length) && this.setRating(rating)
+                && this.setTrailers(trailers) && this.setActors(actors) && this.setProducers(producers)
+                && this.setComments(comments) && this.setGenres(genres)) {
+            this.id = id;
             return true;
         }
         return false;
+
     }
 
     public boolean saveToDatabase() {

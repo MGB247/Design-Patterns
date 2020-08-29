@@ -12,11 +12,11 @@ public class TvSeries implements Watchable {
     private String releaseDate;
     private String length;
     private float rating;
-    private String[] trailers;
-    private String[] actors;
-    private String[] producers;
-    private String[] comments;
-    private String[] genres;
+    private Trailer[] trailers;
+    private Actor[] actors;
+    private Producer[] producers;
+    private Comment[] comments;
+    private Genre[] genres;
 
     // TvSeries specific data
 
@@ -26,8 +26,8 @@ public class TvSeries implements Watchable {
     }
 
     public TvSeries(String id, String name, String cover, String thumbnail, String synopsis, String releaseDate,
-            String length, float rating, String[] trailers, String[] actors, String[] producers, String[] comments,
-            String[] genres) {
+            String length, float rating, Trailer[] trailers, Actor[] actors, Producer[] producers, Comment[] comments,
+            Genre[] genres) {
         this.id = id;
         this.setName(name);
         this.setCover(cover);
@@ -36,6 +36,11 @@ public class TvSeries implements Watchable {
         this.setReleaseDate(releaseDate);
         this.setLength(length);
         this.setRating(rating);
+        this.setTrailers(trailers);
+        this.setActors(actors);
+        this.setProducers(producers);
+        this.setComments(comments);
+        this.setGenres(genres);
     }
 
     public String getId() {
@@ -70,23 +75,23 @@ public class TvSeries implements Watchable {
         return this.rating;
     }
 
-    public String[] getTrailers() {
+    public Trailer[] getTrailers() {
         return this.trailers;
     }
 
-    public String[] getActors() {
+    public Actor[] getActors() {
         return this.actors;
     }
 
-    public String[] getProducers() {
+    public Producer[] getProducers() {
         return this.producers;
     }
 
-    public String[] getComments() {
+    public Comment[] getComments() {
         return this.comments;
     }
 
-    public String[] getGenres() {
+    public Genre[] getGenres() {
         return this.genres;
     }
 
@@ -150,27 +155,27 @@ public class TvSeries implements Watchable {
         return false;
     }
 
-    public boolean setTrailers(String[] trailers) {
+    public boolean setTrailers(Trailer[] trailers) {
         this.trailers = trailers;
         return true;
     }
 
-    public boolean setActors(String[] actors) {
+    public boolean setActors(Actor[] actors) {
         this.actors = actors;
         return true;
     }
 
-    public boolean setProducers(String[] producers) {
+    public boolean setProducers(Producer[] producers) {
         this.producers = producers;
         return true;
     }
 
-    public boolean setComments(String[] comments) {
+    public boolean setComments(Comment[] comments) {
         this.comments = comments;
         return true;
     }
 
-    public boolean setGenres(String[] genres) {
+    public boolean setGenres(Genre[] genres) {
         this.genres = genres;
         return true;
     }
@@ -181,8 +186,8 @@ public class TvSeries implements Watchable {
     }
 
     public boolean setData(String id, String name, String cover, String thumbnail, String synopsis, String releaseDate,
-            String length, float rating, String[] trailers, String[] actors, String[] producers, String[] comments,
-            String[] genres) {
+            String length, float rating, Trailer[] trailers, Actor[] actors, Producer[] producers, Comment[] comments,
+            Genre[] genres) {
         if (this.setName(name) && this.setCover(cover) && this.setThumbnail(thumbnail) && this.setSynopsis(synopsis)
                 && this.setReleaseDate(releaseDate) && this.setLength(length) && this.setRating(rating)
                 && this.setTrailers(trailers) && this.setActors(actors) && this.setProducers(producers)
@@ -196,11 +201,28 @@ public class TvSeries implements Watchable {
 
     public boolean saveToDatabase() {
         // Database code
-        return true;
+        Database database = Database.getInstance();
+        System.out.println("Saving Movie: " + this.name);
+        if (database.executeQuery("Save Movie Query."))
+            return true;
+        return false;
     }
 
     public boolean deleteFromDatabase() {
         // Database code
-        return true;
+        Database database = Database.getInstance();
+        System.out.println("Deleting Movie: " + this.name);
+        if (database.executeQuery("Delete Movie Query."))
+            return true;
+        return false;
+    }
+
+    public boolean updateInDatabase() {
+        // Database code
+        Database database = Database.getInstance();
+        System.out.println("Updating Movie: " + this.name);
+        if (database.executeQuery("Update Movie Query."))
+            return true;
+        return false;
     }
 }

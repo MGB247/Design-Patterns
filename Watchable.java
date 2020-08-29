@@ -19,15 +19,15 @@ public interface Watchable {
 
     public float getRating();
 
-    public String[] getTrailers();
+    public Trailer[] getTrailers();
 
-    public String[] getActors();
+    public Actor[] getActors();
 
-    public String[] getProducers();
+    public Producer[] getProducers();
 
-    public String[] getComments();
+    public Comment[] getComments();
 
-    public String[] getGenres();
+    public Genre[] getGenres();
 
     public boolean setName(String name);
 
@@ -43,21 +43,23 @@ public interface Watchable {
 
     public boolean setRating(float rating);
 
-    public boolean setTrailers(String[] trailers);
+    public boolean setTrailers(Trailer[] trailers);
 
-    public boolean setActors(String[] actors);
+    public boolean setActors(Actor[] actors);
 
-    public boolean setProducers(String[] producers);
+    public boolean setProducers(Producer[] producers);
 
-    public boolean setComments(String[] comments);
+    public boolean setComments(Comment[] comments);
 
-    public boolean setGenres(String[] genres);
+    public boolean setGenres(Genre[] genres);
 
     public boolean setData(String id, String name, String cover, String thumbnail, String synopsis, String releaseDate,
-            String length, float rating, String[] trailers, String[] actors, String[] producers, String[] comments,
-            String[] genres);
+            String length, float rating, Trailer[] trailers, Actor[] actors, Producer[] producers, Comment[] comments,
+            Genre[] genres);
 
     public boolean saveToDatabase();
 
     public boolean deleteFromDatabase();
+
+    public boolean updateInDatabase();
 }

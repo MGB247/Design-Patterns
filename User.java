@@ -5,7 +5,7 @@ public class User implements EventListener {
     private String password;
     private String profilePicture;
 
-    public User(String id, String name, String email, String password, String profilePictrue) {
+    public User(String id, String name, String email, String password, String profilePicture) {
         this.id = id;
         this.setName(name);
         this.setEmail(email);

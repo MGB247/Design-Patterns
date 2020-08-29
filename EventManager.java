@@ -2,7 +2,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class EventManager {
-    private HashMap<String, ArrayList<EventListener>> listeners; // Type of event, Listener of this event type
+    // Type of event, Listener of this event type
+    private HashMap<String, ArrayList<EventListener>> listeners = new HashMap<String, ArrayList<EventListener>>();
+
+    public EventManager() {
+        this.listeners.put("Movie Released", new ArrayList<EventListener>());
+        this.listeners.put("Upcoming Movies", new ArrayList<EventListener>());
+        this.listeners.put("Upcoming Tv Series", new ArrayList<EventListener>());
+    }
 
     public boolean subscribe(String event, EventListener listener) {
         ArrayList<EventListener> listeners = this.listeners.get(event);

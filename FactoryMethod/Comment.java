@@ -1,4 +1,8 @@
-public class Comment {
+package FactoryMethod;
+
+import SingletonPattern.*;
+
+public class Comment implements Table {
     private String id;
     private String text;
     private String date;
@@ -56,6 +60,25 @@ public class Comment {
             this.by = by;
             return true;
         }
+        return false;
+    }
+
+    public boolean save() {
+        if (Database.getInstance().executeQuery("Saving Comment to Database"))
+            return true;
+        return false;
+
+    }
+
+    public boolean delete() {
+        if (Database.getInstance().executeQuery("Deleting Comment from Database"))
+            return true;
+        return false;
+    }
+
+    public boolean update() {
+        if (Database.getInstance().executeQuery("Updating Comment In Database"))
+            return true;
         return false;
     }
 }

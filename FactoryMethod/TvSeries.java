@@ -1,7 +1,12 @@
+package FactoryMethod;
+
+import java.util.HashMap;
+import SingletonPattern.*;
+
 /**
- * Movie
+ * TvSeries
  */
-public class Movie implements Watchable {
+public class TvSeries implements Watchable, Table {
     private String id;
     private String name;
     private String cover;
@@ -16,10 +21,14 @@ public class Movie implements Watchable {
     private Comment[] comments;
     private Genre[] genres;
 
-    public Movie() {
+    // TvSeries specific data
+
+    private HashMap<Integer, Episode[]> seasons; // Season Number, Episodes
+
+    public TvSeries() {
     }
 
-    public Movie(String id, String name, String cover, String thumbnail, String synopsis, String releaseDate,
+    public TvSeries(String id, String name, String cover, String thumbnail, String synopsis, String releaseDate,
             String length, float rating, Trailer[] trailers, Actor[] actors, Producer[] producers, Comment[] comments,
             Genre[] genres) {
         this.id = id;
@@ -87,6 +96,10 @@ public class Movie implements Watchable {
 
     public Genre[] getGenres() {
         return this.genres;
+    }
+
+    public HashMap<Integer, Episode[]> getSeasons() {
+        return this.seasons;
     }
 
     public boolean setName(String name) {
@@ -170,6 +183,11 @@ public class Movie implements Watchable {
         return true;
     }
 
+    public boolean setSeasons(HashMap<Integer, Episode[]> seasons) {
+        this.seasons = seasons;
+        return true;
+    }
+
     public boolean setData(String id, String name, String cover, String thumbnail, String synopsis, String releaseDate,
             String length, float rating, Trailer[] trailers, Actor[] actors, Producer[] producers, Comment[] comments,
             Genre[] genres) {
@@ -184,29 +202,21 @@ public class Movie implements Watchable {
 
     }
 
-    public boolean saveToDatabase() {
-        // Database code
-        Database database = Database.getInstance();
-        System.out.println("Saving Movie: " + this.name);
-        if (database.executeQuery("Save Movie Query."))
+    public boolean save() {
+        if (Database.getInstance().executeQuery("Saving Tv Series to Database"))
+            return true;
+        return false;
+
+    }
+
+    public boolean delete() {
+        if (Database.getInstance().executeQuery("Deleting Tv Series from Database"))
             return true;
         return false;
     }
 
-    public boolean deleteFromDatabase() {
-        // Database code
-        Database database = Database.getInstance();
-        System.out.println("Deleting Movie: " + this.name);
-        if (database.executeQuery("Delete Movie Query."))
-            return true;
-        return false;
-    }
-
-    public boolean updateInDatabase() {
-        // Database code
-        Database database = Database.getInstance();
-        System.out.println("Updating Movie: " + this.name);
-        if (database.executeQuery("Update Movie Query."))
+    public boolean update() {
+        if (Database.getInstance().executeQuery("Updating Tv Series In Database"))
             return true;
         return false;
     }

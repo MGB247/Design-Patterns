@@ -1,4 +1,11 @@
-public class Episode implements Watchable {
+package FactoryMethod;
+
+import SingletonPattern.*;
+
+/**
+ * Movie
+ */
+public class Movie implements Watchable, Table {
     private String id;
     private String name;
     private String cover;
@@ -13,10 +20,10 @@ public class Episode implements Watchable {
     private Comment[] comments;
     private Genre[] genres;
 
-    public Episode() {
+    public Movie() {
     }
 
-    public Episode(String id, String name, String cover, String thumbnail, String synopsis, String releaseDate,
+    public Movie(String id, String name, String cover, String thumbnail, String synopsis, String releaseDate,
             String length, float rating, Trailer[] trailers, Actor[] actors, Producer[] producers, Comment[] comments,
             Genre[] genres) {
         this.id = id;
@@ -181,29 +188,21 @@ public class Episode implements Watchable {
 
     }
 
-    public boolean saveToDatabase() {
-        // Database code
-        Database database = Database.getInstance();
-        System.out.println("Saving Movie: " + this.name);
-        if (database.executeQuery("Save Movie Query."))
+    public boolean save() {
+        if (Database.getInstance().executeQuery("Saving Movie to Database"))
+            return true;
+        return false;
+
+    }
+
+    public boolean delete() {
+        if (Database.getInstance().executeQuery("Deleting Movie from Database"))
             return true;
         return false;
     }
 
-    public boolean deleteFromDatabase() {
-        // Database code
-        Database database = Database.getInstance();
-        System.out.println("Deleting Movie: " + this.name);
-        if (database.executeQuery("Delete Movie Query."))
-            return true;
-        return false;
-    }
-
-    public boolean updateInDatabase() {
-        // Database code
-        Database database = Database.getInstance();
-        System.out.println("Updating Movie: " + this.name);
-        if (database.executeQuery("Update Movie Query."))
+    public boolean update() {
+        if (Database.getInstance().executeQuery("Updating Movie In Database"))
             return true;
         return false;
     }

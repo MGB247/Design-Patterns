@@ -1,3 +1,5 @@
+package StrategyPattern;
+
 public class VideoRenderStrategyContext {
     private VideoRenderStrategy videoRenderStrategy;
 

@@ -1,10 +1,15 @@
-public class Trailer {
+package FactoryMethod;
+
+import SingletonPattern.*;
+
+public class Trailer implements Table {
     private String id;
     private String name;
     private String link;
     private String format;
+    private String watchableId;
 
-    public Trailer(String id, String name, String link, String format) {
+    public Trailer(String id, String name, String link, String format, String watchableId) {
         this.setId(id);
         this.setName(name);
         this.setLink(link);
@@ -25,6 +30,10 @@ public class Trailer {
 
     public String getFormat() {
         return this.format;
+    }
+
+    public String getWatchableId() {
+        return this.watchableId;
     }
 
     public boolean setId(String id) {
@@ -56,6 +65,33 @@ public class Trailer {
             this.format = format;
             return true;
         }
+        return false;
+    }
+
+    public boolean setWatchableId(String watchableId) {
+        if (watchableId.length() > 0) {
+            this.watchableId = watchableId;
+            return true;
+        }
+        return false;
+    }
+
+    public boolean save() {
+        if (Database.getInstance().executeQuery("Saving Trailer to Database"))
+            return true;
+        return false;
+
+    }
+
+    public boolean delete() {
+        if (Database.getInstance().executeQuery("Deleting Trailer from Database"))
+            return true;
+        return false;
+    }
+
+    public boolean update() {
+        if (Database.getInstance().executeQuery("Updating Trailer In Database"))
+            return true;
         return false;
     }
 }

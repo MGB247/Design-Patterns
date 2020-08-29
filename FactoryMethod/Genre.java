@@ -1,4 +1,8 @@
-public class Genre {
+package FactoryMethod;
+
+import SingletonPattern.*;
+
+public class Genre implements Table {
     private String id;
     private String name;
 
@@ -28,6 +32,25 @@ public class Genre {
             this.name = name;
             return true;
         }
+        return false;
+    }
+
+    public boolean save() {
+        if (Database.getInstance().executeQuery("Saving Genre to Database"))
+            return true;
+        return false;
+
+    }
+
+    public boolean delete() {
+        if (Database.getInstance().executeQuery("Deleting Genre from Database"))
+            return true;
+        return false;
+    }
+
+    public boolean update() {
+        if (Database.getInstance().executeQuery("Updating Genre In Database"))
+            return true;
         return false;
     }
 }

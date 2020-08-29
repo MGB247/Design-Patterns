@@ -1,3 +1,5 @@
+package ObserverPattern;
+
 public class User implements EventListener {
     private String id;
     private String name;

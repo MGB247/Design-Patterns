@@ -1,3 +1,5 @@
+package FacadePattern;
+
 import GUILibrary.*;
 
 public class GUIFacade {

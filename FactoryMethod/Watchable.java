@@ -1,3 +1,5 @@
+package FactoryMethod;
+
 /**
  * Watchable
  */
@@ -56,10 +58,4 @@ public interface Watchable {
     public boolean setData(String id, String name, String cover, String thumbnail, String synopsis, String releaseDate,
             String length, float rating, Trailer[] trailers, Actor[] actors, Producer[] producers, Comment[] comments,
             Genre[] genres);
-
-    public boolean saveToDatabase();
-
-    public boolean deleteFromDatabase();
-
-    public boolean updateInDatabase();
 }

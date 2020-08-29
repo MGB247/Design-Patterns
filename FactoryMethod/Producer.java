@@ -1,9 +1,13 @@
-public class Actor {
+package FactoryMethod;
+
+import SingletonPattern.*;
+
+public class Producer implements Table {
     private String id;
     private String name;
     private String age;
 
-    public Actor(String id, String name, String age) {
+    public Producer(String id, String name, String age) {
         this.setId(id);
         this.setName(name);
         this.setAge(age);
@@ -42,6 +46,25 @@ public class Actor {
             this.age = age;
             return true;
         }
+        return false;
+    }
+
+    public boolean save() {
+        if (Database.getInstance().executeQuery("Saving Producer to Database"))
+            return true;
+        return false;
+
+    }
+
+    public boolean delete() {
+        if (Database.getInstance().executeQuery("Deleting Producer from Database"))
+            return true;
+        return false;
+    }
+
+    public boolean update() {
+        if (Database.getInstance().executeQuery("Updating Producer In Database"))
+            return true;
         return false;
     }
 }

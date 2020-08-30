@@ -220,4 +220,10 @@ public class TvSeries implements Watchable, Table {
             return true;
         return false;
     }
+
+    public boolean create() {
+        if (Database.getInstance().executeQuery("Creating Tv Series In Database"))
+            return true;
+        return false;
+    }
 }

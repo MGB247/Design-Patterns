@@ -81,4 +81,10 @@ public class Comment implements Table {
             return true;
         return false;
     }
+
+    public boolean create() {
+        if (Database.getInstance().executeQuery("Creating Comment In Database"))
+            return true;
+        return false;
+    }
 }

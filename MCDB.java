@@ -5,13 +5,15 @@ import FacadePattern.*;
 import StrategyPattern.*;
 //Singleton Pattern is used in Watchables i.e. FactoryMethod
 
-public class Main {
+public class MCDB {
         public static void main(String[] args) {
 
                 // Use Facade for Complex GUI Library i.e. Facade Pattern
 
                 GUIFacade guiFacade = new GUIFacade();
-                guiFacade.initializeGUI();
+                guiFacade.initializeNavbar();
+                guiFacade.initializeSidebar();
+                guiFacade.initializeMainContent();
 
                 // End Facade Patter Code
 
@@ -76,7 +78,7 @@ public class Main {
 
                 // Strategy Pattern Code
 
-                VideoRenderStrategyContext videoRenderStrategyContext = new VideoRenderStrategyContext();
+                RenderTrailer videoRenderStrategyContext = new RenderTrailer();
                 videoRenderStrategyContext.setStratgey(new MkvVideoRenderStrategy());
                 videoRenderStrategyContext.executeStrategy(tvSeries.getTrailers()[0].getName(),
                                 tvSeries.getTrailers()[0].getLink());

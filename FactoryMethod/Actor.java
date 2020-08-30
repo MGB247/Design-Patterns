@@ -67,4 +67,10 @@ public class Actor implements Table {
             return true;
         return false;
     }
+
+    public boolean create() {
+        if (Database.getInstance().executeQuery("Creating Actor In Database"))
+            return true;
+        return false;
+    }
 }

@@ -67,4 +67,10 @@ public class Producer implements Table {
             return true;
         return false;
     }
+
+    public boolean create() {
+        if (Database.getInstance().executeQuery("Creating Producer In Database"))
+            return true;
+        return false;
+    }
 }

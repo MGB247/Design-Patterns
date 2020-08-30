@@ -1,6 +1,6 @@
 package StrategyPattern;
 
-public class VideoRenderStrategyContext {
+public class RenderTrailer {
     private VideoRenderStrategy videoRenderStrategy;
 
     public void setStratgey(VideoRenderStrategy videoRenderStrategy) {

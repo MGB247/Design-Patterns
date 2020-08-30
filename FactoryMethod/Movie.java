@@ -206,4 +206,10 @@ public class Movie implements Watchable, Table {
             return true;
         return false;
     }
+
+    public boolean create() {
+        if (Database.getInstance().executeQuery("Creating Movie In Database"))
+            return true;
+        return false;
+    }
 }

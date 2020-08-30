@@ -53,4 +53,10 @@ public class Genre implements Table {
             return true;
         return false;
     }
+
+    public boolean create() {
+        if (Database.getInstance().executeQuery("Creating Genre In Database"))
+            return true;
+        return false;
+    }
 }

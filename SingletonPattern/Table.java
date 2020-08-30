@@ -6,4 +6,6 @@ public interface Table {
     public boolean delete();
 
     public boolean update();
+
+    public boolean create();
 }
